@@ -158,7 +158,7 @@
 				</div>
 			</div>
 		</div>
-<form method='post' action="/admin/add/">
+<form method='post' action="/admin/add/" enctype="multipart/form-data">
         <div class="hero is-dark">
 			<div class="container">
 				<div class="field is-horizontal">
@@ -168,7 +168,7 @@
 					<div class="field-body">
 						<div class="field">
 							<p class="control has-icons-left">
-								<input class="input is-danger" type="text" placeholder="Instructor's Name">
+								<input class="input is-danger" type="text" name="name" placeholder="Instructor's Name">
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-book"></i>
 								</span>
@@ -191,7 +191,7 @@
 										</a>
 									</p>
 									<p class="control">
-										<input class="input" type="tel" placeholder="Phone Number">
+										<input class="input" type="tel" name="phoneNumber" placeholder="Phone Number">
 									</p>
 								</div>
 							<p class="help">Do not enter the first zero</p>
@@ -217,7 +217,7 @@
 	
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								<input name="lng" class="input is-danger" type="text" placeholder="longitude">
+								<input name="lon" class="input is-danger" type="text" placeholder="longitude">
 								<span class="icon is-small is-left">
 									<i class="fas fa-map-marker-alt"></i>
 								</span>
@@ -235,7 +235,7 @@
 					<div class="field-body">
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								<input name="place" class="input is-danger" type="text" placeholder="Location Name">
+								<input name="locationName" class="input is-danger" type="text" placeholder="Location Name">
 								<span class="icon is-small is-left">
 									<i class="fas fa-info"></i>
 								</span>
@@ -252,7 +252,7 @@
 					<div class="field-body">
 						<div class="field">
 							<p class="control is-expanded has-icons-left">
-								<input class="input" type="text" placeholder="Location Address">
+								<input name="address" class="input" type="text" placeholder="Location Address">
 								<span class="icon is-small is-left">
 									<i class="fas fa-address-card"></i>
 								</span>
@@ -268,7 +268,7 @@
 					<div class="field-body">
 						<div class="field">
 							<p class="control has-icons-left">
-								<input class="input" type="text" placeholder="Genre">
+								<input name="genre" class="input" type="text" placeholder="Genre">
 								<span class="icon is-small is-left">
 									<i class="fas fa-list-ul"></i>
 								</span>
@@ -290,7 +290,7 @@
 									</a>
 								</p>
 								<p class="control has-icons-left">
-									<input class="input" type="text" placeholder="facebook link">
+									<input class="input" type="text" name="facebook"  placeholder="facebook link">
 									<span class="icon is-small is-left">
 										<i class="fab fa-lg fa-facebook-f"></i>
 									</span>
@@ -311,7 +311,7 @@
 									</a>
 								</p>
 								<p class="control has-icons-left">
-									<input class="input" type="text" placeholder="youtube link">
+									<input class="input" type="text" name="youtube" placeholder="youtube link">
 									<span class="icon is-small is-left">
 										<i class="fab fa-lg fa-youtube"></i>
 									</span>
@@ -333,7 +333,7 @@
 									</a>
 								</p>
 								<p class="control has-icons-left">
-									<input class="input" type="text" placeholder="twitter link">
+									<input class="input" type="text" name="twitter"  placeholder="twitter link">
 									<span class="icon is-small is-left">
 										<i class="fab fa-lg fa-twitter"></i>
 									</span>
@@ -351,12 +351,12 @@
 						<div class="field-body">
 							<p class="control has-icons-left is-expanded">
 								<span class="select is-danger">
-									<select>
-										<option selected>Music School</option>
-										<option>Live Music Venue</option>
-										<option>Cafe/Restaurent</option>
-										<option>Music Store</option>
-										<option>Recording Studio</option>
+									<select name="type">
+										<option value="MUSIC SCHOOL" selected>Music School</option>
+										<option value="Live Music Venue">Live Music Venue</option>
+										<option value="Restaurant">Cafe/Restaurent</option>
+										<option value="Music Store">Music Store</option>
+										<option value="Recording Studio">Recording Studio</option>
 									</select>
 								</span>
 								<span class="icon is-small is-left">
@@ -375,12 +375,24 @@
 					<div class="field-body">
 						<div class="field">
 						<div class="control">
-							<textarea class="textarea" placeholder="Description of the music location"></textarea>
+							<textarea name="description" class="textarea" placeholder="Description of the music location"></textarea>
 						</div>
 						</div>
 					</div>
 				</div>
 
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">Short Description</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+						<div class="control">
+							<textarea name="shortDesc" class="textarea" placeholder="Short Description of the music location not more than 50 words"></textarea>
+						</div>
+						</div>
+					</div>
+				</div>
 				<div class="field is-horizontal">
 					<div class="field-label is-normal"></div>
 

@@ -1,4 +1,21 @@
-var model = require('./model.js');
+
+const model = require('./model.js');
+const fs = require('fs');
+const { exec } = require('child_process');
+function data(name,locationName,insImage,locImage,type,genre,address,description,phoneNumber,youtube,facebook,twitter){
+	this.name = name 
+	this.locationName = locationName
+	this.insImage = "../Images/"+insImage
+	this.locImage = "../Images/"+locImage
+	this.type = type
+	this.genre = genre
+	this.address = address
+	this.description = description
+	this.youtube = youtube
+	this.facebook = facebook
+	this.twitter = twitter
+	this.phoneNumber = phoneNumber
+}
 module.exports = {
 	usermap : function(req,res){
 		//model.place(res)
@@ -58,19 +75,19 @@ module.exports = {
 	},
 	
 	adminadd : function(req, res){
-		insImage(req, res, function(err) {
-        		if (err) {
-             			return res.end("Something went wrong!");
-         		}
-         		return res.end("File uploaded sucessfully!.");
-    	 	});
-		locImage(req, res, function(err) {
-         		if (err) {
-            			return res.end("Something went wrong!");
-        		}
-        		return res.end("File uploaded sucessfully!.");
-     		});
-		res.send("add data") // return the file that will add the blog
+		var f = req.body
+		console.log(req.body)
+		var obj = new data(f.name,f.locationName,'insImage_'+f.lat+'_'+f.lon+'.jpg','locImage_'+f.lat+'_'+f.lon+'.jpg',f.type,f.genre,f.address,f.description,f.phoneNumber,f.youtube,f.facebook,f.twitter);
+		fs.writeFile('./blog/data.json',JSON.stringify(obj),(err)=>{
+			if(!err){
+				model.addplace(f.lat,f.lon,f.locationName,f.shortDesc);
+				var comm ='mustache data.json blog.mustache > '+req.body.lat+'_'+req.body.lon+'.html'
+				exec(comm,{cwd : "/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"});
+				res.sendFile("/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"+req.body.lat+"_"+req.body.lon+".html");
+			}
+			else
+				res.send('some error try again');
+		});	
 	},
 
 	adminedit : function(req, res){
