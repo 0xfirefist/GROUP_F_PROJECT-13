@@ -73,11 +73,6 @@ module.exports = {
 		res.send("add data") // return the file that will add the blog
 	},
 
-	blogadd : function(req,res){
-		res.send('add blog')
-		// image storer
-	},
-
 	adminedit : function(req, res){
 		res.send("edit data")
 	},
