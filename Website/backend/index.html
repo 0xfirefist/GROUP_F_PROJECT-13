@@ -25,6 +25,13 @@
             }   
 
         </style>
+	<script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("GET","/place",false);
+		xhttp.send();
+		console.log(xhttp.responseText);
+		var json = xhttp.responseText;
+	</script>
     </head>
 
     <body>
