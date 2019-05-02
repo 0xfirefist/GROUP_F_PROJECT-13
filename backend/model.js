@@ -31,12 +31,23 @@ module.exports = {
 	},
 	deleteplace : function(req,res){
 		if(req.query.lat!=undefined || req.query.lon!=undefined)
-		connection.query('DELETE FROM location WHERE latitude LIKE $req.query.lat AND longitude LIKE $req.query.lon', function (err){
-			if(err) throw err;
+		connection.query('DELETE FROM location WHERE latitude LIKE ' + req.query.lat +' AND longitude LIKE '+req.query.lon, function (err){
+			if(err) console.log("some error");
+			fs.unlink('blog/'+req.query.lat+'_'+req.query.lon+'.html',function(err){
+        			if(err) return console.log(err);
+        			console.log('blog file deleted successfully');
+			})
+
+			fs.unlink('Images/'+'insImage_'+req.query.lat+'_'+req.query.lon+'.jpg',function(err){
+        			if(err) return console.log(err);
+        			console.log('instructor image  deleted successfully');
+			})
+
+			fs.unlink('Images/'+'locImage_'+req.query.lat+'_'+req.query.lon+'.jpg',function(err){
+			        if(err) return console.log(err);
+        			console.log('location image deleted successfully');
+			})
 			res.send('done')
-			fs.unlink('/blog/'+req.query.lat+'_'+req.query.lon+'.html')
-			fs.unlink('/Images/'+'insImage_'+req.query.lat+'_'+req.query.lon+'.jpg')
-			fs.unlink('/Images/'+'locImage_'+req.query.lat+'_'+req.query.lon+'.jpg')
 		});
 		else
 			res.send('enter lon and lat to delete')

@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const session = require('express-session')
-const port = 3001
+const port = 3000
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -59,10 +59,6 @@ app.post('/admin/login/',function(req,res){
 app.post('/admin/add/',[auth,image] ,function(req, res){
 	console.log(req.body.name)
 	controller.adminadd(req,res); // add data
-});
-
-app.get('/admin/edit/',auth ,function(req,res){
-	controller.adminedit(req,res); //edit data
 });
 
 app.get('/admin/delete/',auth ,function(req,res){

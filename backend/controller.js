@@ -82,16 +82,13 @@ module.exports = {
 			if(!err){
 				model.addplace(f.lat,f.lon,f.locationName,f.shortDesc);
 				var comm ='mustache data.json blog.mustache > '+req.body.lat+'_'+req.body.lon+'.html'
-				exec(comm,{cwd : "/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"});
-				res.sendFile("/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"+req.body.lat+"_"+req.body.lon+".html");
+				exec(comm,{cwd : "/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"},function(){
+					res.sendFile("/home/snowman/Desktop/project/GROUP_F_PROJECT-13/backend/blog/"+req.body.lat+"_"+req.body.lon+".html");
+				});
 			}
 			else
 				res.send('some error try again');
 		});	
-	},
-
-	adminedit : function(req, res){
-		res.send("edit data")
 	},
 
 	admindelete : function(req, res){
