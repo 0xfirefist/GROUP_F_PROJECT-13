@@ -7,6 +7,3 @@ In this a map of Indore city will be made on which important music related locat
 
 -  It is built with extensibilty in mind. It can, in future include other cities.
 
-Technology Stack : 
-Front End using [AngularJS](https://angularjs.org/) and BackEnd using [NodeJS](https://nodejs.org/en/). 
-[MySQL](https://www.mysql.com/) for Database.
